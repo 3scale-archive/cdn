@@ -25441,7 +25441,7 @@ ThickSpace:"  ",ThinSpace:" ",thinsp:" ",thkap:"≈",thksim:"∼",THORN:
 
     ApiDocsProxy.prototype.execute = function(httpClient, obj) {
       var patt, res, result;
-      if (ApiDocsProxy.forceHttps) {
+      if (this.forceHttps()) {
         if (this.originHttps()) {
           obj.url = this.forceHttpsProtocol(obj.url);
         }
@@ -25478,6 +25478,10 @@ ThickSpace:"  ",ThinSpace:" ",thinsp:" ",thkap:"≈",thksim:"∼",THORN:
       };
     };
 
+    ApiDocsProxy.prototype.forceHttps = function() {
+      return false;
+    };
+
     ApiDocsProxy.prototype.originHttps = function() {
       return window.top.location.protocol === 'https:';
     };
@@ -25497,7 +25501,7 @@ ThickSpace:"  ",ThinSpace:" ",thinsp:" ",thkap:"≈",thksim:"∼",THORN:
     };
 
     ApiDocsProxy.prototype.sameOrigin = function() {
-      if (ApiDocsProxy.forceHttps) {
+      if (this.forceHttps()) {
         return true;
       } else {
         return this.desiredOrigin() === this.locationOrigin();

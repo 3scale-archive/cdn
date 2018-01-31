@@ -18,7 +18,7 @@ Nn.bindKey=Ao,Nn.callback=Le,Nn.chain=te,Nn.chunk=function(n,t,r){t=(r?$r(n,t,r)
  * @license Apache-2.0
  */
 
-(function(){/* jshint ignore:start */
+(function(){/* jshint ignore:start */ 
  {(function() {
   var template = Handlebars.template, templates = Handlebars.templates = Handlebars.templates || {};
 templates['apikey_auth'] = template({"1":function(container,depth0,helpers,partials,data) {
@@ -699,7 +699,7 @@ templates['resource'] = template({"1":function(container,depth0,helpers,partials
     + ((stack1 = (helpers.sanitize || (depth0 && depth0.sanitize) || helpers.helperMissing).call(depth0 != null ? depth0 : {},(depth0 != null ? depth0.url : depth0),{"name":"sanitize","hash":{},"data":data})) != null ? stack1 : "")
     + "' data-sw-translate>Raw</a>\n    </li>\n";
 },"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    var stack1, helper, options, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, buffer =
+    var stack1, helper, options, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, buffer = 
   "<div class='heading'>\n  <h2>\n    <a href='#!/"
     + ((stack1 = (helpers.sanitize || (depth0 && depth0.sanitize) || alias2).call(alias1,(depth0 != null ? depth0.id : depth0),{"name":"sanitize","hash":{},"data":data})) != null ? stack1 : "")
     + "' class=\"toggleEndpointList\" data-id=\""
@@ -811,7 +811,7 @@ templates['status_code'] = template({"1":function(container,depth0,helpers,parti
     + ((stack1 = helpers.each.call(alias1,(depth0 != null ? depth0.headers : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "    </tbody>\n  </table>\n</td>";
 },"useData":true});
-})();}
+})();} 
  /* jshint ignore:end */
 'use strict';
 
@@ -3105,7 +3105,7 @@ Handlebars.registerHelper('sanitize', function (text) {
 
 Handlebars.registerHelper('renderTextParam', function(param) {
     var result, type = 'text', idAtt = '';
-    var paramType = (param.schema) ? param.type || param.schema.type || '' : param.type || '';
+    var paramType = (param.schema) ? param.type || param.schema.type || '' : param.type || ''; 
     var isArray = paramType.toLowerCase() === 'array' || param.allowMultiple;
     var defaultValue = isArray && Array.isArray(param.default) ? param.default.join('\n') : param.default;
     var name = Handlebars.Utils.escapeExpression(param.name);
@@ -24891,7 +24891,7 @@ SwaggerUi.partials.signature = (function () {
     return result;
   };
   */
-
+  
   var getPrefix = function (name, xml) {
     var result = name || '';
 
@@ -25029,7 +25029,7 @@ SwaggerUi.partials.signature = (function () {
 
     if (namespace) {
       attrs.push(namespace);
-    }
+    }   
 
     if (!properties && !additionalProperties) { return getErrorMessage(); }
 
@@ -25074,10 +25074,10 @@ SwaggerUi.partials.signature = (function () {
     var output, index;
     config = config || {};
     config.modelsToIgnore = config.modelsToIgnore || [];
-
+   
     var descriptor = _.isString($ref) ? getDescriptorByRef($ref, name, models, config)
         : getDescriptor(name, definition, models, config);
-
+    
     if (!descriptor) {
       return getErrorMessage();
     }
@@ -25128,7 +25128,7 @@ SwaggerUi.partials.signature = (function () {
     else {
         name = name || model.name;
     }
-
+    
     if (config.modelsToIgnore.indexOf($ref) > -1) {
       type = 'loop';
       config.loopTo = modelType;
@@ -25139,7 +25139,7 @@ SwaggerUi.partials.signature = (function () {
     if (!model.definition) {
       return null;
     }
-    return new Descriptor(name, type, model.definition, models, config);
+    return new Descriptor(name, type, model.definition, models, config);    
   }
 
   function getDescriptor (name, definition, models, config){
@@ -25440,7 +25440,7 @@ ThickSpace:"  ",ThinSpace:" ",thinsp:" ",thkap:"≈",thksim:"∼",THORN:
     };
 
     ApiDocsProxy.prototype.execute = function(httpClient, obj) {
-      var patt, res, result;
+      var result;
       if (this.forceHttps()) {
         if (this.originHttps()) {
           obj.url = this.forceHttpsProtocol(obj.url);
@@ -25452,13 +25452,7 @@ ThickSpace:"  ",ThinSpace:" ",thinsp:" ",thkap:"≈",thksim:"∼",THORN:
         if (_.isUndefined(obj.method)) {
           obj.method = obj.type || "POST";
         }
-        patt = new RegExp(":\/\/.*\.execute-api\..*amazonaws\.com");
-        res = patt.test(obj.originalUrl);
-        if (res || window.ApiDocsProxy.beta) {
-          obj.url = 'https://apidocsresty.3sca.net/api_docs/proxy';
-        } else {
-          obj.url = this.locationOrigin() + '/api_docs/proxy';
-        }
+        obj.url = this.locationOrigin() + '/api_docs/proxy';
         obj.url += '?_=' + (new Date).getTime();
         $.extend(obj.headers, NO_CACHE_HEADERS, this.apiDocsHeaders(obj));
       }
